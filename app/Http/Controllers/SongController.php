@@ -9,30 +9,30 @@ class SongController extends Controller
     public function index() {
         $songs = collect([
             [
-                'title' => 'River',
-                'artist' => 'Miley Cyrus',
-                'album' => 'Endless Summer Vocation',
-                'duration' => [
-                    'minutes' => 3,
-                    'seconds' => 20
-                ]
-            ],
-            [
-                'title' => 'Song for You',
-                'artist' => 'Lee Isaacs',
-                'album' => 'After the Apocalypses',
+                'title' => 'Kill Bill',
+                'artist' => 'SZA',
+                'album' => 'Good Days',
                 'duration' => [
                     'minutes' => 2,
-                    'seconds' => 48
+                    'seconds' => 33
                 ]
             ],
             [
-                'title' => "คำถามซึ่งไร้คนตอบ",
-                'artist' => 'Getsunova',
-                'album' => 'The First Album',
+                'title' => 'Leave the door open',
+                'artist' => 'SilkSonic',
+                'album' => 'An Evening with Silk Sonic',
                 'duration' => [
                     'minutes' => 4,
-                    'seconds' => 29
+                    'seconds' => 18
+                ]
+            ],
+            [
+                'title' => "Marry You",
+                'artist' => 'Bruno Mars',
+                'album' => 'Doo-Wops & Hooligans',
+                'duration' => [
+                    'minutes' => 3,
+                    'seconds' => 47
                 ]
             ],
         ]);
