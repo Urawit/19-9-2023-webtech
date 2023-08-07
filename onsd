@@ -1,0 +1,30 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#7214
+    [34mall[39m: [
+      [34;4mApp\Models\Song[39;24m {#7243
+        [34mtitle[39m: "[32mI've got to.[39m",
+        [34martist[39m: "[32mChaim Ritchie[39m",
+        [34mduration[39m: [35m149[39m,
+      },
+      [34;4mApp\Models\Song[39;24m {#7216
+        [34mtitle[39m: "[32mCat, and.[39m",
+        [34martist[39m: "[32mAlejandra Moen[39m",
+        [34mduration[39m: [35m150[39m,
+      },
+      [34;4mApp\Models\Song[39;24m {#7244
+        [34mtitle[39m: "[32mMock Turtle.[39m",
+        [34martist[39m: "[32mMr. Jayden Steuber DDS[39m",
+        [34mduration[39m: [35m164[39m,
+      },
+      [34;4mApp\Models\Song[39;24m {#7245
+        [34mtitle[39m: "[32mLet me see.[39m",
+        [34martist[39m: "[32mMr. Rahul Boyle[39m",
+        [34mduration[39m: [35m174[39m,
+      },
+      [34;4mApp\Models\Song[39;24m {#7246
+        [34mtitle[39m: "[32mI? Ah, THAT'S.[39m",
+        [34martist[39m: "[32mRebeca Shields Jr.[39m",
+        [34mduration[39m: [35m123[39m,
+      },
+    ],
+  }
+

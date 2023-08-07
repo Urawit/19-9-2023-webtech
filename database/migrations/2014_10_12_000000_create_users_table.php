@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // SQL : create table users (....)
+        // table name: plural
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->id(); //'id' int(11) auto_increment PK -> uuid
+            $table->string('name'); // 'name' varchar(255)
+            $table->string('email')->unique(); // 'email' varchar(255) UNIQUE
+            $table->timestamp('email_verified_at')->nullable(); // 'email_verified_at' datetime NULL
+            $table->string('password'); // 'password' varchar(60)
+            $table->rememberToken(); // 'remember_token' varchar(..)
+            $table->timestamps(); // 'created_at' timestamp default(now)
+                                    // 'updated_at' timestamp default(now)
         });
     }
 
@@ -27,6 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // SQL : drop (if exists) table users
         Schema::dropIfExists('users');
     }
 };
