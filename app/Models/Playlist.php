@@ -25,4 +25,26 @@ class Playlist extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopePublicList($query)
+    {
+        return $query->where('accessibility', PlaylistAccessibility::PUBLIC);
+    }
+
+    public function scopePrivateList($query)
+    {
+        return $query->where('accessibility', PlaylistAccessibility::PRIVATE);
+    }
+
+    public function scopeOfUser($query, $user_id) {
+        return $query->where('user_id', $user_id);
+    }
+
+    public function scopeFilterName($query, $name) {
+        return $query->where('name', 'like', "%{$name}");
+    }
+
+    public function isPrivate() : bool {
+        return $this->accessibility === PlaylistAccessibility::PRIVATE;
+    }
 }

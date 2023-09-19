@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artist;
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ArtistController extends Controller
 {
@@ -30,14 +31,20 @@ class ArtistController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) // Dependency Injection
+    public function store(Request $request)
     {
+        Gate::authorize('create', Artist::class);
+
+        $request->validate([
+            'name' => ['required', 'unique:App\Models\Artist,name']
+        ]);
+
         $artist_name = $request->get('name');
         if ($artist_name == null) {
             return redirect()->back();
         }
         $artist = new Artist();
-        $artist->name = $artist_name;
+        $artist->name = $request->get('name');
         $artist->save();
         return redirect()->route('artists.index');
     }
@@ -58,7 +65,7 @@ class ArtistController extends Controller
     public function edit(Artist $artist)
     {
         return view('artists.edit', [
-            'artist'=>$artist
+            'artist' => $artist
         ]);
     }
 
@@ -86,26 +93,39 @@ class ArtistController extends Controller
 
     /**
      * Show the form for creating new song of specified artist
-     * HTTP Method: GET
-     * Route Name: artists.songs.create
+     * Route Name: artist.song.create
      * Route Param: {artist}
      */
-    public function createSong(Artist $artist) {
-        return view('artists.create-song',[
-            'artist' => $artist
-    ]);
+    public function createSong(Artist $artist)
+    {
+        return view(
+            'artists.create-song',
+            [
+                'artist' => $artist
+            ]
+        );
     }
 
     /**
      * Store a newly created song of specified artist in storage.
      * HTTP Method: POST
-     * Route Name: artists.songs.store
+     * Route Name: artist.song.store
      * Route Param: {artist}
      */
-    public function storeSong(Request $request, Artist $artist) {
+    public function storeSong(Request $request, Artist $artist)
+    {
+
+        $request->validate([
+            // 'title' => 'required,min:4,max:255'
+            'title' => ['required', 'min:4', 'max:255'],
+            'duration' => ['required', 'integer', 'min:10']
+        ]);
+
         $song = new Song();
         $song->title = $request->get('title');
         $song->duration = $request->get('duration');
+        // $song->artist_id = $artist->id;
+        // $song->save();
         $artist->songs()->save($song);
         return redirect()->route('artists.show', ['artist' => $artist]);
     }
