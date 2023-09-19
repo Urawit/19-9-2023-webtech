@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ArtistController;
+use App\Http\Controllers\PlaylistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,5 +37,15 @@ Route::group([
     Route::post('logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
     Route::post('refresh', [\App\Http\Controllers\Api\AuthController::class, 'refresh']);
     Route::post('me', [\App\Http\Controllers\Api\AuthController::class, 'me']);
+
+});
+
+Route::group([
+
+    'middleware' => 'api',
+
+], function ($router) {
+
+    Route::apiResource('playlist', PlaylistController::class);
 
 });
